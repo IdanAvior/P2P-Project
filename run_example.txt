@@ -1,0 +1,355 @@
+idan@idan-Lenovo-G510:~/eclipse-workspace/Linux Project 4/A$ ./p2pserver &
+[1] 6319
+idan@idan-Lenovo-G510:~/eclipse-workspace/Linux Project 4/A$ Server - server: opening socket on 0.0.0.0:12345
+
+idan@idan-Lenovo-G510:~/eclipse-workspace/Linux Project 4/A$ ./p2pclient seed a1 a2 &
+[2] 6320
+idan@idan-Lenovo-G510:~/eclipse-workspace/Linux Project 4/A$ Server - accept: accepted connection from 0.0.0.0:28
+Client - share: sending MSG_NOTIFY for "a1" @ 127.0.0.1:0
+Server - recv: waiting for message
+Server - recv: message received
+Server - notify: receiving MSG_NOTIFY
+Server - notify: assigned port 12346
+Server - notify: sending MSG_ACK
+Server - notify: MSG_ACK sent
+Client - share: receiving MSG_ACK
+Client - share: set port to 12346
+Client - share: sending MSG_NOTIFY for "a2" @ 127.0.0.1:12346
+Server - accept: accepted connection from 0.0.0.0:28
+Server - recv: waiting for message
+Server - recv: message received
+Server - notify: receiving MSG_NOTIFY
+Server - notify: sending MSG_ACK
+Server - notify: MSG_ACK sent
+Client - share: receiving MSG_ACK
+Peer - start_server: starting peer server
+Peer - start_server: opened socket
+Peer - start_server: bound socket to port 12346
+Peer - start_server: listening on socket
+Peer - start_server: address: 127.0.0.1:12346
+Peer - filesrv: waiting for request
+
+idan@idan-Lenovo-G510:~/eclipse-workspace/Linux Project 4/A$ cd ..
+idan@idan-Lenovo-G510:~/eclipse-workspace/Linux Project 4$ cd B
+idan@idan-Lenovo-G510:~/eclipse-workspace/Linux Project 4/B$ ./p2pclient leech a1 &
+[3] 6325
+Server - accept: accepted connection from 0.0.0.0:28
+Client - get_list: sending MSG_DIRREQ
+idan@idan-Lenovo-G510:~/eclipse-workspace/Linux Project 4/B$ Server - recv: waiting for message
+Server - recv: message received
+Server - dirreq: receiving MSG_DIRREQ
+Server - dirreq: sending MSG_DIRHDR with 2 items
+Server - dirreq: waiting for ACK
+Client - get_list: receiving MSG_DIRHDR with 2 items
+Client - get_list: sending ACK
+Server - dirreq: ACK received
+Server - dirent: sending MSG_DIRENT for "a1"
+Server - dirent: sent MSG_DIRENT for "a1"
+Server - dirent: waiting for ACK from client
+Client - get_list: received MSG_DIRENT for "a1" @ 127.0.0.1:12346
+Server - dirent: received ACK from client
+Server - dirent: sending MSG_DIRENT for "a2"
+Server - dirent: sent MSG_DIRENT for "a2"
+Server - dirent: waiting for ACK from client
+Client - get_list: received MSG_DIRENT for "a2" @ 127.0.0.1:12346
+Peer - file_request: connecting to 127.0.0.1:12346
+Server - dirent: received ACK from client
+Peer - file_request: connected to peer
+Peer - file_srv: accepted connection from 25.127.0.0:37387
+Peer - file_request: received request for file "a1"
+Peer - file request: sending MSG_FILESRV
+Peer - file_srv: waiting for ACK from peer
+Peer - filereq: request granted
+Peer- file_request: sending ACK to peer
+Peer - file_srv: ACK received
+Peer - file_request: sending file "a1"
+Peer - filesrv: waiting for request
+Peer - filereq: file "a1" has been downloaded
+Client - share: sending MSG_NOTIFY for "a1" @ 127.0.0.1:0
+Server - accept: accepted connection from 0.0.0.0:28
+Server - recv: waiting for message
+Server - recv: message received
+Server - notify: receiving MSG_NOTIFY
+Server - notify: assigned port 12347
+Server - notify: sending MSG_ACK
+Server - notify: MSG_ACK sent
+Client - share: receiving MSG_ACK
+Client - share: set port to 12347
+Peer - start_server: starting peer server
+Peer - start_server: opened socket
+Peer - start_server: bound socket to port 12347
+Peer - start_server: listening on socket
+Peer - start_server: address: 127.0.0.1:12347
+Peer - filesrv: waiting for request
+
+idan@idan-Lenovo-G510:~/eclipse-workspace/Linux Project 4/B$ ./p2pclient seed b2 &
+[4] 6351
+idan@idan-Lenovo-G510:~/eclipse-workspace/Linux Project 4/B$ Server - accept: accepted connection from 0.0.0.0:28
+Client - share: sending MSG_NOTIFY for "b2" @ 127.0.0.1:0
+Server - recv: waiting for message
+Server - recv: message received
+Server - notify: receiving MSG_NOTIFY
+Server - notify: assigned port 12348
+Server - notify: sending MSG_ACK
+Server - notify: MSG_ACK sent
+Client - share: receiving MSG_ACK
+Client - share: set port to 12348
+Peer - start_server: starting peer server
+Peer - start_server: opened socket
+Peer - start_server: bound socket to port 12348
+Peer - start_server: listening on socket
+Peer - start_server: address: 127.0.0.1:12348
+Peer - filesrv: waiting for request
+
+idan@idan-Lenovo-G510:~/eclipse-workspace/Linux Project 4/B$ cd ..
+idan@idan-Lenovo-G510:~/eclipse-workspace/Linux Project 4$ cd C
+idan@idan-Lenovo-G510:~/eclipse-workspace/Linux Project 4/C$ ./p2pclient leech a2 b2 &
+[5] 6355
+idan@idan-Lenovo-G510:~/eclipse-workspace/Linux Project 4/C$ Client - get_list: sending MSG_DIRREQ
+Server - accept: accepted connection from 0.0.0.0:28
+Server - recv: waiting for message
+Server - recv: message received
+Server - dirreq: receiving MSG_DIRREQ
+Server - dirreq: sending MSG_DIRHDR with 4 items
+Server - dirreq: waiting for ACK
+Client - get_list: receiving MSG_DIRHDR with 4 items
+Client - get_list: sending ACK
+Server - dirreq: ACK received
+Server - dirent: sending MSG_DIRENT for "a1"
+Server - dirent: sent MSG_DIRENT for "a1"
+Server - dirent: waiting for ACK from client
+Client - get_list: received MSG_DIRENT for "a1" @ 127.0.0.1:12346
+Server - dirent: received ACK from client
+Server - dirent: sending MSG_DIRENT for "a2"
+Server - dirent: sent MSG_DIRENT for "a2"
+Server - dirent: waiting for ACK from client
+Client - get_list: received MSG_DIRENT for "a2" @ 127.0.0.1:12346
+Server - dirent: received ACK from client
+Server - dirent: sending MSG_DIRENT for "a1"
+Server - dirent: sent MSG_DIRENT for "a1"
+Server - dirent: waiting for ACK from client
+Client - get_list: received MSG_DIRENT for "a1" @ 127.0.0.1:12347
+Server - dirent: received ACK from client
+Server - dirent: sending MSG_DIRENT for "b2"
+Server - dirent: sent MSG_DIRENT for "b2"
+Server - dirent: waiting for ACK from client
+Client - get_list: received MSG_DIRENT for "b2" @ 127.0.0.1:12348
+Peer - file_request: connecting to 127.0.0.1:12346
+Server - dirent: received ACK from client
+Peer - file_srv: accepted connection from 25.127.0.0:37387
+Peer - file_request: connected to peer
+Peer - file_request: received request for file "a2"
+Peer - file request: sending MSG_FILESRV
+Peer - file_srv: waiting for ACK from peer
+Peer - filereq: request granted
+Peer- file_request: sending ACK to peer
+Peer - file_srv: ACK received
+Peer - file_request: sending file "a2"
+Peer - filesrv: waiting for request
+Peer - filereq: file "a2" has been downloaded
+Peer - file_request: connecting to 127.0.0.1:12348
+Peer - file_request: connected to peer
+Peer - file_srv: accepted connection from 31.127.0.0:23048
+Peer - file_request: received request for file "b2"
+Peer - file request: sending MSG_FILESRV
+Peer - file_srv: waiting for ACK from peer
+Peer - filereq: request granted
+Peer- file_request: sending ACK to peer
+Peer - file_srv: ACK received
+Peer - file_request: sending file "b2"
+Peer - filesrv: waiting for request
+Peer - filereq: file "b2" has been downloaded
+Client - share: sending MSG_NOTIFY for "a2" @ 127.0.0.1:0
+Server - accept: accepted connection from 0.0.0.0:28
+Server - recv: waiting for message
+Server - recv: message received
+Server - notify: receiving MSG_NOTIFY
+Server - notify: assigned port 12349
+Server - notify: sending MSG_ACK
+Server - notify: MSG_ACK sent
+Client - share: receiving MSG_ACK
+Client - share: set port to 12349
+Client - share: sending MSG_NOTIFY for "b2" @ 127.0.0.1:12349
+Server - accept: accepted connection from 0.0.0.0:28
+Server - recv: waiting for message
+Server - recv: message received
+Server - notify: receiving MSG_NOTIFY
+Server - notify: sending MSG_ACK
+Server - notify: MSG_ACK sent
+Client - share: receiving MSG_ACK
+Peer - start_server: starting peer server
+Peer - start_server: opened socket
+Peer - start_server: bound socket to port 12349
+Peer - start_server: listening on socket
+Peer - start_server: address: 127.0.0.1:12349
+Peer - filesrv: waiting for request
+
+idan@idan-Lenovo-G510:~/eclipse-workspace/Linux Project 4/C$ ./p2pclient leech a1 &
+[6] 6365
+idan@idan-Lenovo-G510:~/eclipse-workspace/Linux Project 4/C$ Server - accept: accepted connection from 0.0.0.0:28
+Client - get_list: sending MSG_DIRREQ
+Server - recv: waiting for message
+Server - recv: message received
+Server - dirreq: receiving MSG_DIRREQ
+Server - dirreq: sending MSG_DIRHDR with 6 items
+Server - dirreq: waiting for ACK
+Client - get_list: receiving MSG_DIRHDR with 6 items
+Client - get_list: sending ACK
+Server - dirreq: ACK received
+Server - dirent: sending MSG_DIRENT for "a1"
+Server - dirent: sent MSG_DIRENT for "a1"
+Server - dirent: waiting for ACK from client
+Client - get_list: received MSG_DIRENT for "a1" @ 127.0.0.1:12346
+Server - dirent: received ACK from client
+Server - dirent: sending MSG_DIRENT for "a2"
+Server - dirent: sent MSG_DIRENT for "a2"
+Server - dirent: waiting for ACK from client
+Client - get_list: received MSG_DIRENT for "a2" @ 127.0.0.1:12346
+Server - dirent: received ACK from client
+Server - dirent: sending MSG_DIRENT for "a1"
+Server - dirent: sent MSG_DIRENT for "a1"
+Server - dirent: waiting for ACK from client
+Client - get_list: received MSG_DIRENT for "a1" @ 127.0.0.1:12347
+Server - dirent: received ACK from client
+Server - dirent: sending MSG_DIRENT for "b2"
+Server - dirent: sent MSG_DIRENT for "b2"
+Server - dirent: waiting for ACK from client
+Client - get_list: received MSG_DIRENT for "b2" @ 127.0.0.1:12348
+Server - dirent: received ACK from client
+Server - dirent: sending MSG_DIRENT for "a2"
+Server - dirent: sent MSG_DIRENT for "a2"
+Server - dirent: waiting for ACK from client
+Client - get_list: received MSG_DIRENT for "a2" @ 127.0.0.1:12349
+Server - dirent: received ACK from client
+Server - dirent: sending MSG_DIRENT for "b2"
+Server - dirent: sent MSG_DIRENT for "b2"
+Server - dirent: waiting for ACK from client
+Client - get_list: received MSG_DIRENT for "b2" @ 127.0.0.1:12349
+Peer - file_request: connecting to 127.0.0.1:12346
+Server - dirent: received ACK from client
+Peer - file_request: connected to peer
+Peer - file_srv: accepted connection from 25.127.0.0:37387
+Peer - file_request: received request for file "a1"
+Peer - filesrv: unable to send file
+Peer - filesrv: waiting for request
+Peer - filereq: request refused
+Peer - file_request: connecting to 127.0.0.1:12347
+Peer - file_request: connected to peer
+Peer - file_srv: accepted connection from 97.49.0.0:0
+Peer - file_request: received request for file "a1"
+Peer - file request: sending MSG_FILESRV
+Peer - file_srv: waiting for ACK from peer
+Peer - filereq: request granted
+Peer- file_request: sending ACK to peer
+Peer - file_srv: ACK received
+Peer - file_request: sending file "a1"
+Peer - filesrv: waiting for request
+Peer - filereq: file "a1" has been downloaded
+Client - share: sending MSG_NOTIFY for "a1" @ 127.0.0.1:0
+Server - accept: accepted connection from 0.0.0.0:28
+Server - recv: waiting for message
+Server - recv: message received
+Server - notify: receiving MSG_NOTIFY
+Server - notify: assigned port 12350
+Server - notify: sending MSG_ACK
+Server - notify: MSG_ACK sent
+Client - share: receiving MSG_ACK
+Client - share: set port to 12350
+Peer - start_server: starting peer server
+Peer - start_server: opened socket
+Peer - start_server: bound socket to port 12350
+Peer - start_server: listening on socket
+Peer - start_server: address: 127.0.0.1:12350
+Peer - filesrv: waiting for request
+
+idan@idan-Lenovo-G510:~/eclipse-workspace/Linux Project 4/C$ ./p2pclient shutdown
+Client - get_list: sending MSG_DIRREQ
+Server - accept: accepted connection from 0.0.0.0:28
+Server - recv: waiting for message
+Server - recv: message received
+Server - dirreq: receiving MSG_DIRREQ
+Server - dirreq: sending MSG_DIRHDR with 7 items
+Server - dirreq: waiting for ACK
+Client - get_list: receiving MSG_DIRHDR with 7 items
+Client - get_list: sending ACK
+Server - dirreq: ACK received
+Server - dirent: sending MSG_DIRENT for "a1"
+Server - dirent: sent MSG_DIRENT for "a1"
+Server - dirent: waiting for ACK from client
+Client - get_list: received MSG_DIRENT for "a1" @ 127.0.0.1:12346
+Server - dirent: received ACK from client
+Server - dirent: sending MSG_DIRENT for "a2"
+Server - dirent: sent MSG_DIRENT for "a2"
+Server - dirent: waiting for ACK from client
+Client - get_list: received MSG_DIRENT for "a2" @ 127.0.0.1:12346
+Server - dirent: received ACK from client
+Server - dirent: sending MSG_DIRENT for "a1"
+Server - dirent: sent MSG_DIRENT for "a1"
+Server - dirent: waiting for ACK from client
+Client - get_list: received MSG_DIRENT for "a1" @ 127.0.0.1:12347
+Server - dirent: received ACK from client
+Server - dirent: sending MSG_DIRENT for "b2"
+Server - dirent: sent MSG_DIRENT for "b2"
+Server - dirent: waiting for ACK from client
+Client - get_list: received MSG_DIRENT for "b2" @ 127.0.0.1:12348
+Server - dirent: received ACK from client
+Server - dirent: sending MSG_DIRENT for "a2"
+Server - dirent: sent MSG_DIRENT for "a2"
+Server - dirent: waiting for ACK from client
+Client - get_list: received MSG_DIRENT for "a2" @ 127.0.0.1:12349
+Server - dirent: received ACK from client
+Server - dirent: sending MSG_DIRENT for "b2"
+Server - dirent: sent MSG_DIRENT for "b2"
+Server - dirent: waiting for ACK from client
+Client - get_list: received MSG_DIRENT for "b2" @ 127.0.0.1:12349
+Server - dirent: received ACK from client
+Server - dirent: sending MSG_DIRENT for "a1"
+Server - dirent: sent MSG_DIRENT for "a1"
+Server - dirent: waiting for ACK from client
+Client - get_list: received MSG_DIRENT for "a1" @ 127.0.0.1:12350
+Server - dirent: received ACK from client
+Client - shutdown: sending MSG_SHUTDOWN to server
+Server - accept: accepted connection from 0.0.0.0:28
+Client - shutdown: sending shutdown message to 127.0.0.1:12346
+Peer - file_srv: accepted connection from 25.127.0.0:37387
+Peer - shutdown: shutdown message received
+Server - recv: waiting for message
+Peer - shutdown: shutting down
+Server - recv: message received
+Server - shutdown: shutdown message received
+connect: Connection reset by peer
+Server - shutdown: shutting down
+Client - shutdown: sending shutdown message to 127.0.0.1:12347
+Client - shutdown: sending shutdown message to 127.0.0.1:12348
+Peer - file_srv: accepted connection from 31.127.0.0:23048
+Peer - shutdown: shutdown message received
+Client - shutdown: sending shutdown message to 127.0.0.1:12349
+Peer - shutdown: shutting down
+Client - shutdown: sending shutdown message to 127.0.0.1:12349
+Client - shutdown: sending shutdown message to 127.0.0.1:12350
+Peer - file_srv: accepted connection from 97.49.0.0:0
+Peer - shutdown: shutdown message received
+Peer - file_srv: accepted connection from 98.50.0.0:0
+Peer - shutdown: shutdown message received
+Peer - shutdown: shutting down
+Peer - shutdown: shutting down
+Client - shutdown: shutting down
+Peer - file_srv: accepted connection from 97.49.0.0:0
+Peer - shutdown: shutdown message received
+Peer - shutdown: shutting down
+[1]   Done                    ./p2pserver  (wd: ~/eclipse-workspace/Linux Project 4/A)
+(wd now: ~/eclipse-workspace/Linux Project 4/C)
+[2]   Done                    ./p2pclient seed a1 a2  (wd: ~/eclipse-workspace/Linux Project 4/A)
+(wd now: ~/eclipse-workspace/Linux Project 4/C)
+[4]   Done                    ./p2pclient seed b2  (wd: ~/eclipse-workspace/Linux Project 4/B)
+(wd now: ~/eclipse-workspace/Linux Project 4/C)
+[5]-  Done                    ./p2pclient leech a2 b2
+[6]+  Done                    ./p2pclient leech a1
+[3]+  Done                    ./p2pclient leech a1  (wd: ~/eclipse-workspace/Linux Project 4/B)
+(wd now: ~/eclipse-workspace/Linux Project 4/C)
+idan@idan-Lenovo-G510:~/eclipse-workspace/Linux Project 4/C$ ps
+  PID TTY          TIME CMD
+ 2774 pts/2    00:00:00 bash
+ 6372 pts/2    00:00:00 ps
+
+
